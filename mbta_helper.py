@@ -34,6 +34,7 @@ def get_lat_long(place_name):
     See https://developer.mapquest.com/documentation/geocoding-api/address/get/
     for Mapquest Geocoding  API URL formatting requirements.
     """
+    place_name = place_name.replace(' ', '%20')
     url = f'http://www.mapquestapi.com/geocoding/v1/address?key={MAPQUEST_API_KEY}&location={place_name}'
     response_data = get_json(url)
     response_data1 = response_data["results"][0]["locations"][0]['latLng']
@@ -49,6 +50,7 @@ def get_nearest_station(latitude, longitude):
     """
 
 
+
 def find_stop_near(place_name):
     """
     Given a place name or address, return the nearest MBTA stop and whether it is wheelchair accessible.
@@ -61,7 +63,7 @@ def main():
     You can all the functions here
     """
     # print(get_json(MAPQUEST_API_KEY))
-    place_name = 'Prudential%20Tower'
+    place_name = 'Prudential Center'
     get_lat_long(place_name)
 
 
