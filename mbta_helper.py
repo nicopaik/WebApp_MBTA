@@ -1,10 +1,15 @@
+import mbta_helper
+import urllib.request
+import json
+from pprint import pprint
+
 # Useful URLs (you need to add the appropriate parameters for your requests)
 MAPQUEST_BASE_URL = "http://open.mapquestapi.com/geocoding/v1/address"
 MBTA_BASE_URL = "https://api-v3.mbta.com/stops"
 
 # Your API KEYS (you need to use your own keys - very long random characters)
-MAPQUEST_API_KEY = L7NHzNvuOR9Gm0h12LJF6BBZ3855ha8D
-MBTA_API_KEY = 82629ccee2ca4a40b1410cb8711a184b
+MAPQUEST_API_KEY = "L7NHzNvuOR9Gm0h12LJF6BBZ3855ha8D"
+MBTA_API_KEY = "6527b5fff8394156b8877887d9db2a65"
 
 
 
@@ -15,7 +20,12 @@ def get_json(url):
     Given a properly formatted URL for a JSON web API request, return
     a Python JSON object containing the response to that request.
     """
-    pass
+    url = f'http://www.mapquestapi.com/geocoding/v1/address?key={MAPQUEST_API_KEY}&location=Babson%20College'
+    f = urllib.request.urlopen(url)
+    response_text = f.read().decode('utf-8')
+    response_data = json.loads(response_text)
+    pprint(response_data)
+    # print(response_data["results"][0]["locations"][0]['postalCode'])
 
 
 def get_lat_long(place_name):
@@ -26,7 +36,17 @@ def get_lat_long(place_name):
     for Mapquest Geocoding  API URL formatting requirements.
     """
     pass
-
+    url = f'http://www.mapquestapi.com/geocoding/v1/address?key={MAPQUEST_API_KEY}&location={place_name}'
+    f = urllib.request.urlopen(url)
+    response_text = f.read().decode('utf-8')
+    response_data = json.loads(response_text)
+    response_data1 = response_data["results"][0]["locations"][0]['latLng']
+    print(response_data1)
+    latlong_s = set(['lat','long'])
+    print(latlong_s)
+    print(zip(latlong_s, response_data1))
+    for pair in zip(latlong_s, response_data1):
+    print(pair)
 
 def get_nearest_station(latitude, longitude):
     """
@@ -49,8 +69,10 @@ def main():
     """
     You can all the functions here
     """
-    pass
-
+    get_json(MAPQUEST_API_KEY)
+    get_lat_long
+    place_name = 'boston'
+    get_lat_long(place_name)
 
 if __name__ == '__main__':
     main()
