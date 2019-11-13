@@ -35,7 +35,6 @@ def get_lat_long(place_name):
     See https://developer.mapquest.com/documentation/geocoding-api/address/get/
     for Mapquest Geocoding  API URL formatting requirements.
     """
-    pass
     url = f'http://www.mapquestapi.com/geocoding/v1/address?key={MAPQUEST_API_KEY}&location={place_name}'
     f = urllib.request.urlopen(url)
     response_text = f.read().decode('utf-8')
@@ -46,7 +45,8 @@ def get_lat_long(place_name):
     print(latlong_s)
     print(zip(latlong_s, response_data1))
     for pair in zip(latlong_s, response_data1):
-    print(pair)
+        print(pair)
+
 
 def get_nearest_station(latitude, longitude):
     """
@@ -69,17 +69,8 @@ def main():
     You can all the functions here
     """
     get_json(MAPQUEST_API_KEY)
-<<<<<<< HEAD
-    get_nearest_station(latitude,longitude)
-=======
-<<<<<<< HEAD
-    get_lat_long
     place_name = 'boston'
     get_lat_long(place_name)
-=======
->>>>>>> 3a1f6926198e7b823c2ac1ced923c7ba93220ebc
-
->>>>>>> 40eabfe61a277fc16b5d0888e924954ad7b5d325
 
 if __name__ == '__main__':
     main()
