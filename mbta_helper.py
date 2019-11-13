@@ -64,6 +64,7 @@ def main():
     """
     # print(get_json(MAPQUEST_API_KEY))
     place_name = 'Prudential Center'
+    print(f'The latitude and longitude of {place_name} is:')
     get_lat_long(place_name)
 
 
