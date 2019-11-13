@@ -19,7 +19,7 @@ def get_json(url):
     Given a properly formatted URL for?agger/index.html#/Stop/ApiWeb_StopController_index for URL
     formatting requirements for the 'GET /stops' API.
     """
-    url = f'http://www.mapquestapi.com/geocoding/v1/address?key={L7NHzNvuOR9Gm0h12LJF6BBZ3855ha8D}&location=Babson%20College'
+    url = f'http://www.mapquestapi.com/geocoding/v1/address?key={MAPQUEST_API_KEY}&location=Babson%20College'
     f = urllib.request.urlopen(url)
     response_text = f.read().decode('utf-8')
     response_data = json.loads(response_text)
@@ -37,7 +37,7 @@ def main():
     """
     You can all the functions here
     """
-    pass
+    print(response_data["results"][0]["locations"][0]['postalCode'])
 
 
 if __name__ == '__main__':
