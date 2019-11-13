@@ -20,7 +20,7 @@ def get_json(url):
     Given a properly formatted URL for a JSON web API request, return
     a Python JSON object containing the response to that request.
     """
-    url = f'http://www.mapquestapi.com/geocoding/v1/address?key={MAPQUEST_API_KEY}&location=Babson%20College'
+    # url = f'http://www.mapquestapi.com/geocoding/v1/address?key={MAPQUEST_API_KEY}&location=Babson%20College'
     f = urllib.request.urlopen(url)
     response_text = f.read().decode('utf-8')
     response_data = json.loads(response_text)
@@ -41,10 +41,10 @@ def get_lat_long(place_name):
     response_data1 = response_data["results"][0]["locations"][0]['latLng']
     print(response_data1)
     latlong_s = set(['lat','long'])
-    print(latlong_s)
-    print(zip(latlong_s, response_data1))
-    for pair in zip(latlong_s, response_data1):
-        print(pair)
+    # print(latlong_s)
+    # print(zip(latlong_s, response_data1))
+    # for pair in zip(latlong_s, response_data1):
+        # print(pair)
 
 
 def get_nearest_station(latitude, longitude):
@@ -67,8 +67,7 @@ def main():
     """
     You can all the functions here
     """
-    get_json(MAPQUEST_API_KEY)
-    place_name = 'boston'
+    place_name = 'Copley'
     get_lat_long(place_name)
 
 if __name__ == '__main__':
