@@ -26,8 +26,6 @@ def get_json(url):
     response_data = json.loads(response_text)
     return response_data
     # pprint(response_data)
-    # print(response_data["results"][0]["locations"][0]['postalCode'])
-
 
 def get_lat_long(place_name):
     """
@@ -40,11 +38,6 @@ def get_lat_long(place_name):
     response_data = get_json(url)
     response_data1 = response_data["results"][0]["locations"][0]['latLng']
     print(response_data1)
-    latlong_s = set(['lat','long'])
-    # print(latlong_s)
-    # print(zip(latlong_s, response_data1))
-    # for pair in zip(latlong_s, response_data1):
-        # print(pair)
 
 
 def get_nearest_station(latitude, longitude):
@@ -67,8 +60,10 @@ def main():
     """
     You can all the functions here
     """
-    place_name = 'Copley'
+    # print(get_json(MAPQUEST_API_KEY))
+    place_name = 'Prudential%20Tower'
     get_lat_long(place_name)
+
 
 if __name__ == '__main__':
     main()
