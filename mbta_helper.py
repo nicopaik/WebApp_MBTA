@@ -70,9 +70,13 @@ def main():
     You can all the functions here
     """
     get_json(MAPQUEST_API_KEY)
+<<<<<<< HEAD
     get_lat_long
     place_name = 'boston'
     get_lat_long(place_name)
+=======
+
+>>>>>>> 40eabfe61a277fc16b5d0888e924954ad7b5d325
 
 if __name__ == '__main__':
     main()
