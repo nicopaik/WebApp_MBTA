@@ -8,8 +8,8 @@ MAPQUEST_BASE_URL = "http://open.mapquestapi.com/geocoding/v1/address"
 MBTA_BASE_URL = "https://api-v3.mbta.com/stops"
 
 # Your API KEYS (you need to use your own keys - very long random characters)
-MAPQUEST_API_KEY = 'L7NHzNvuOR9Gm0h12LJF6BBZ3855ha8D'
-MBTA_API_KEY = '6527b5fff8394156b8877887d9db2a65'
+MAPQUEST_API_KEY = "L7NHzNvuOR9Gm0h12LJF6BBZ3855ha8D"
+MBTA_API_KEY = "6527b5fff8394156b8877887d9db2a65"
 
 
 
@@ -20,11 +20,11 @@ def get_json(url):
     Given a properly formatted URL for?agger/index.html#/Stop/ApiWeb_StopController_index for URL
     formatting requirements for the 'GET /stops' API.
     """
-    url = f'http://www.mapquestapi.com/geocoding/v1/address?key={MAPQUEST_API_KEY}&location=Babson%20College'
     f = urllib.request.urlopen(url)
     response_text = f.read().decode('utf-8')
     response_data = json.loads(response_text)
     pprint(response_data)
+    print(response_data["results"][0]["locations"][0]['postalCode'])
 
 
 def get_lat_long(place_name):
@@ -58,7 +58,8 @@ def main():
     """
     You can all the functions here
     """
-    print(response_data["results"][0]["locations"][0]['postalCode'])
+    url = f'http://www.mapquestapi.com/geocoding/v1/address?key={MAPQUEST_API_KEY}&location=Babson%20College'
+    get_json(url)
 
 
 if __name__ == '__main__':
