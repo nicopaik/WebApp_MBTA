@@ -25,6 +25,7 @@ def get_json(url):
     response_text = f.read().decode('utf-8')
     response_data = json.loads(response_text)
     pprint(response_data)
+    # print(response_data["results"][0]["locations"][0]['postalCode'])
 
 
 def get_lat_long(place_name):
@@ -58,6 +59,7 @@ def main():
     """
     You can all the functions here
     """
+    get_json(MAPQUEST_API_KEY)
 
 
 if __name__ == '__main__':
