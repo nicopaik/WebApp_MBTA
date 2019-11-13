@@ -60,7 +60,7 @@ def find_stop_near(place_name):
 
 def main():
     """
-    You can all the functions here
+    You can have all the functions here
     """
     # print(get_json(MAPQUEST_API_KEY))
     place_name = 'Prudential Center'
