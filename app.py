@@ -18,3 +18,5 @@ def get_stop(place_name):
             return f'{stop} is accessible to wheelchairs'
         else:
             return f'{stop} is not accesible to wheelchairs'
+
+            
