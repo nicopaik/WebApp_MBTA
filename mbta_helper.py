@@ -57,15 +57,15 @@ def get_nearest_station(latitude, longitude):
         message = 'This station is wheelchair accessible.'
     else:
         message = 'This station is wheelchair inaccessible.'
-    return station 'and' message
+    return station, message
 
 
 def find_stop_near(place_name):
     """
     Given a place name or address, return the nearest MBTA stop and whether it is wheelchair accessible.
     """
-    pass
-
+    lat, lng = get_lat_long(place_name)
+    return get_nearest_station(lat, lng)
 
 def main():
     """
@@ -78,6 +78,10 @@ def main():
 
     print(f'The nearest MBTA station to {place_name} is:')
     print(get_nearest_station(42.3489,-71.08182))
+
+    print(f'The nearest MBTA station to Copley Square is:')
+    print(find_stop_near('Copley Square'))
+
 
 if __name__ == '__main__':
     main()
