@@ -1,13 +1,14 @@
 """
-Simple "Hello, World" application using Flask
+Amazing app to help you find nearest MBTA station
 """
 
 from flask import Flask
+from mbta_helper import *
 
 
 app = Flask(__name__)
 
 
 @app.route('/')
-def hello_world():
-    return 'Hello World!'
+def index():
+    return "Index Page"
