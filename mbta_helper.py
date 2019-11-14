@@ -76,15 +76,17 @@ def main():
     You can have all the functions here
     """
     # print(get_json(MAPQUEST_API_KEY))
-    place_name = 'Prudential Center'
-    print(f'The latitude and longitude of {place_name} is:')
-    print(get_lat_long(place_name))
+    # place_name = 'Prudential Center'
+    # print(f'The latitude and longitude of {place_name} is:')
+    # print(get_lat_long(place_name))
 
-    print(f'The nearest MBTA station to {place_name} is:')
-    print(get_nearest_station(42.3489,-71.08182))
+    # print(f'The nearest MBTA station to {place_name} is:')
+    # print(get_nearest_station(42.3489,-71.08182))
 
-    print(f'The nearest MBTA station to Northeastern University is:')
-    print(find_stop_near('Mortheastern University'))
+    # print(f'The nearest MBTA station to Northeastern University is:')
+    # print(find_stop_near('Mortheastern University'))
+
+    print(find_stop_near('prudential center'))
 
 
 if __name__ == '__main__':
