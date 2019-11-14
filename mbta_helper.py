@@ -37,7 +37,9 @@ def get_lat_long(place_name):
     url = f'http://www.mapquestapi.com/geocoding/v1/address?key={MAPQUEST_API_KEY}&location={place_name}'
     response_data = get_json(url)
     response_data1 = response_data["results"][0]["locations"][0]['latLng']
-    return response_data1
+    latitude = response_data1['lat']
+    longitude = response_data1['lng']
+    return latitude, longitude
 
 
 def get_nearest_station(latitude, longitude):
@@ -57,16 +59,17 @@ def get_nearest_station(latitude, longitude):
         message = 'This station is wheelchair accessible.'
     else:
         message = 'This station is wheelchair inaccessible.'
-    return station 'and' message
+    return station, message
 
 
 def find_stop_near(place_name):
     """
     Given a place name or address, return the nearest MBTA stop and whether it is wheelchair accessible.
     """
-    pass
     lat, lng = get_lat_long(place_name)
+    # return lat, lng
     return get_nearest_station(lat, lng)
+
 
 def main():
     """
@@ -79,6 +82,10 @@ def main():
 
     print(f'The nearest MBTA station to {place_name} is:')
     print(get_nearest_station(42.3489,-71.08182))
+
+    print(f'The nearest MBTA station to Northeastern University is:')
+    print(find_stop_near('Mortheastern University'))
+
 
 if __name__ == '__main__':
     main()
