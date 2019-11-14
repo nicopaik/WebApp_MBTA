@@ -1,17 +1,17 @@
 """
 Amazing app to help you find nearest MBTA station
 """
-from flask import Flask
+from flask import Flask, render_template
 from mbta_helper import find_stop_near
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    """"
+    """
     displays index.html as homepage
-    """"
-    return "Index Page"
+    """
+    return render_template('index.html')
 
 @app.route('/<place_name>')
 def get_stop(place_name):
