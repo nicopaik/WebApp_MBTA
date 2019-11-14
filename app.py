@@ -13,13 +13,21 @@ def index():
     """
     return render_template('index.html')
 
-@app.route('/<place_name>')
-def get_stop(place_name):
-    stop, is_accessible =  find_stop_near(place_name)
-    if stop:
-        if is_accessible == 1:
-            return f'{stop} is accessible to wheelchairs'
-        else:
-            return f'{stop} is not accesible to wheelchairs'
 
-            
+@app.route('/nearest', methods = ['POST'])
+def find_stop():
+    """
+    Upon clicking the 'Submit' button, the data from the form will be sent via a POST
+    request to the Flask backend at the route POST /nearest
+    """
+    
+    
+
+@app.route('/nearest_mbta', methods=['GET', 'POST'])
+def nearest_stop():
+    '''
+    The Flask backend will handle the request to POST /nearest_mbta.
+    Then your app will render a mbta_station page for the user - presenting nearest MBTA stop
+    and whether it is wheelchair accessible. In this step, you need to use the code from Part 1
+    '''
+    
