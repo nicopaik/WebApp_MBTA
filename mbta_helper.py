@@ -1,4 +1,3 @@
-import mbta_helper
 import urllib.request
 import json
 from pprint import pprint
@@ -48,8 +47,17 @@ def get_nearest_station(latitude, longitude):
     See https://api-v3.mbta.com/docs/swagger/index.html#/Stop/ApiWeb_StopController_index for URL
     formatting requirements for the 'GET /stops' API.
     """
-    location = f'{MBTA_BASE_URL}?api_key={MBTA_API_KEY}&filter[latitude]={latitude}&filter[longitude]={longitude}&sort=distance'
-    print(mbta_helper.find_stop_near(location))
+    url = f'{MBTA_BASE_URL}?api_key={MBTA_API_KEY}&filter[latitude]={latitude}&filter[longitude]={longitude}&sort=distance'
+    response_data = get_json(url)
+    station =  response_data['data'][0]['attributes']['name']
+    wheelchair = response_data['data'][0]['attributes']['wheelchair_boarding']
+    if wheelchair == 0:
+        message = 'No information whether this station is wheelchair accessible.'
+    elif wheelchair == 1:
+        message = 'This station is wheelchair accessible.'
+    else:
+        message = 'This station is wheelchair inaccessible.'
+    return station 'and' message
 
 
 def find_stop_near(place_name):
@@ -68,8 +76,8 @@ def main():
     print(f'The latitude and longitude of {place_name} is:')
     print(get_lat_long(place_name))
 
-    # print(f'The nearest MBTA station to {place_name} is:')
-    # print(get_nearest_station(latitude, longitude))
+    print(f'The nearest MBTA station to {place_name} is:')
+    print(get_nearest_station(42.3489,-71.08182))
 
 if __name__ == '__main__':
     main()
