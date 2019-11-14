@@ -38,7 +38,7 @@ def get_lat_long(place_name):
     url = f'http://www.mapquestapi.com/geocoding/v1/address?key={MAPQUEST_API_KEY}&location={place_name}'
     response_data = get_json(url)
     response_data1 = response_data["results"][0]["locations"][0]['latLng']
-    print(response_data1)
+    return response_data1
 
 
 def get_nearest_station(latitude, longitude):
@@ -48,7 +48,8 @@ def get_nearest_station(latitude, longitude):
     See https://api-v3.mbta.com/docs/swagger/index.html#/Stop/ApiWeb_StopController_index for URL
     formatting requirements for the 'GET /stops' API.
     """
-
+    location = f'{MBTA_BASE_URL}?api_key={MBTA_API_KEY}&filter[latitude]={latitude}&filter[longitude]={longitude}&sort=distance'
+    print(mbta_helper.find_stop_near(location))
 
 
 def find_stop_near(place_name):
@@ -65,8 +66,10 @@ def main():
     # print(get_json(MAPQUEST_API_KEY))
     place_name = 'Prudential Center'
     print(f'The latitude and longitude of {place_name} is:')
-    get_lat_long(place_name)
+    print(get_lat_long(place_name))
 
+    # print(f'The nearest MBTA station to {place_name} is:')
+    # print(get_nearest_station(latitude, longitude))
 
 if __name__ == '__main__':
     main()
